@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    const int gridSize = 10;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +14,9 @@ public class Waypoint : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public int GetGridSize()
+    {
+        return  gridSize;
+    }
 }
