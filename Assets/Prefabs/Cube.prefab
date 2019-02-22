@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4171626630180392}
   - component: {fileID: 114762783862969486}
-  - component: {fileID: 114556353877630840}
+  - component: {fileID: 114728309970101216}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -649,7 +649,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4293067007
---- !u!114 &114556353877630840
+--- !u!114 &114728309970101216
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
