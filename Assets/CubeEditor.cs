@@ -7,8 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour {
    
-    TextMesh textMesh;
-    Vector3 gridPos;
     Waypoint Waypoint;
 
     private void Awake()
@@ -31,16 +29,19 @@ public class CubeEditor : MonoBehaviour {
     private void SnapToGrid()
     {
         int gridSize = Waypoint.GetGridSize();
-        gridPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
-        gridPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
-        transform.position = new Vector3(gridPos.x, 0f, gridPos.z);
+        
+        transform.position = new Vector3(
+            Waypoint.GetGridPos().x,
+            0f,
+            Waypoint.GetGridPos().y);
     }
 
     private void UpdateLabel()
     {
         int gridSize = Waypoint.GetGridSize();
-        textMesh = GetComponentInChildren<TextMesh>();
-        string labelText = gridPos.x / gridSize + "," + gridPos.z / gridSize;
+        TextMesh textMesh = GetComponentInChildren<TextMesh>();
+        string labelText = 
+            Waypoint.GetGridPos().x / gridSize + "," + Waypoint.GetGridPos().y / gridSize;
         textMesh.text = labelText;
         gameObject.name = labelText;
     }
