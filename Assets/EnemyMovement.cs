@@ -9,19 +9,20 @@ public class EnemyMovement : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(PrintAllWaypoints());
         print("Hey I'm back at Start");
+        StartCoroutine(FollowPath());
     }
 
-    IEnumerator PrintAllWaypoints()
+    IEnumerator FollowPath()
     {
+        print("Starting patrol...");
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
             print("Visiting: " + waypoint);
             yield return new WaitForSecondsRealtime(1f);
         }
-        print("Ending patrol");
+        print("Ending patrol.");
     }
 
     // Update is called once per frame

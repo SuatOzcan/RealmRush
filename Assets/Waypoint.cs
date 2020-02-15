@@ -6,6 +6,7 @@ public class Waypoint : MonoBehaviour {
 
     const int gridSize = 10;
     Vector2Int gridPos;
+
     // Use this for initialization
     void Start () {
 		

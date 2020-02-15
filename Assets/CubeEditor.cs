@@ -5,12 +5,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 [SelectionBase]
 [RequireComponent(typeof(Waypoint))]
+
 public class CubeEditor : MonoBehaviour {
-   
+
     Waypoint Waypoint;
 
     private void Awake()
-    {
+    { 
         Waypoint = GetComponent<Waypoint>();
     }
     // Use this for initialization
