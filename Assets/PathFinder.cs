@@ -6,12 +6,27 @@ using UnityEngine;
 public class PathFinder : MonoBehaviour {
 
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-
+    [SerializeField] Waypoint startWaypoint, endWayPoint;
+    Vector2Int[] directions =
+    {
+        Vector2Int.up,
+        Vector2Int.right,
+        Vector2Int.down,
+        Vector2Int.left
+    };
 	// Use this for initialization
 	void Start () {
 
-        LoadBlocks();	
+        LoadBlocks();
+        ColorStartAndEnd();
 	}
+
+    private void ColorStartAndEnd()
+    {
+        startWaypoint.SetTopColor(Color.green);
+        endWayPoint.SetTopColor(Color.green);
+    }
+
 
     private void LoadBlocks()
     {
@@ -28,7 +43,6 @@ public class PathFinder : MonoBehaviour {
             else
             {
                 grid.Add(waypoint.GetGridPos(), waypoint);
-                waypoint.SetTopColor();
             }
         }
 
