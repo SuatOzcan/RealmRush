@@ -701,8 +701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f520710a4cf5348ad694774e157329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: {fileID: 656410539}
-  endWayPoint: {fileID: 2127864572}
 --- !u!1001 &1039783915
 Prefab:
   m_ObjectHideFlags: 0
@@ -782,11 +780,6 @@ Prefab:
       propertyPath: path.Array.data[6]
       value: 
       objectReference: {fileID: 656410539}
-    - target: {fileID: 114332456992457192, guid: 29556f7dd14e8a6498c162358fa5fa10,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29556f7dd14e8a6498c162358fa5fa10, type: 2}
   m_IsPrefabAsset: 0

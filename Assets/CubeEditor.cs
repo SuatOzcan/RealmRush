@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class CubeEditor : MonoBehaviour {
 
-    [SerializeField] Waypoint startWaypoint, endWayPoint;
     Waypoint Waypoint;
 
     private void Awake()
