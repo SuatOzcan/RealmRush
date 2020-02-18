@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class CubeEditor : MonoBehaviour {
 
+    //random comment
     Waypoint Waypoint;
 
     private void Awake()
