@@ -37,6 +37,7 @@ public class PathFinder : MonoBehaviour {
             print(searchCenter);
             HaltIfEndFound(searchCenter);
             ExploreNeighbours(searchCenter);
+            searchCenter.isExplored = true;
         }
         print("Finish pathfinding.");
     }
@@ -60,16 +61,28 @@ public class PathFinder : MonoBehaviour {
             print("Exploring " + neighbourCoordinates);
             try
             {
-                Waypoint neighbour = grid[neighbourCoordinates];
-                neighbour.SetTopColor(Color.blue);
-                queue.Enqueue(neighbour);
-                print("Queueing" + neighbour.name);
+                QueueNewNeighbours(neighbourCoordinates);
             }
             catch (Exception)
             {
 
                 //do nothing.
             }
+        }
+    }
+
+    private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
+    {
+        Waypoint neighbour = grid[neighbourCoordinates];
+        if (neighbour.isExplored)
+        {
+            //do nothing
+        }
+        else
+        {
+            neighbour.SetTopColor(Color.blue);
+            queue.Enqueue(neighbour);
+            print("Queueing" + neighbour.name);
         }
     }
 
