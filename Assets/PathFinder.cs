@@ -9,6 +9,7 @@ public class PathFinder : MonoBehaviour {
     [SerializeField] Waypoint startWaypoint, endWayPoint;
     Queue<Waypoint> queue = new Queue<Waypoint>();
     bool isRunning = true;
+    Waypoint searchCenter;
 
     Vector2Int[] directions =
     {
@@ -33,32 +34,32 @@ public class PathFinder : MonoBehaviour {
         while (queue.Count>0 && isRunning)
         {
             
-            var searchCenter = queue.Dequeue();
+            searchCenter = queue.Dequeue();
             print(searchCenter);
-            HaltIfEndFound(searchCenter);
-            ExploreNeighbours(searchCenter);
+            HaltIfEndFound();
+            ExploreNeighbours();
             searchCenter.isExplored = true;
         }
         print("Finish pathfinding.");
     }
 
-    private void HaltIfEndFound(Waypoint searchCenter)
+    private void HaltIfEndFound()
     {
         if (searchCenter==endWayPoint)
         {
-            print("searching from end node, therefore stopping.");
+            //print("searching from end node, therefore stopping.");
             isRunning = false;
         }
     }
 
-    private void ExploreNeighbours(Waypoint from )
+    private void ExploreNeighbours()
     {
         if (!isRunning) return;
 
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int neighbourCoordinates = from.GetGridPos() + direction;
-            print("Exploring " + neighbourCoordinates);
+            Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
+            //print("Exploring " + neighbourCoordinates);
             try
             {
                 QueueNewNeighbours(neighbourCoordinates);
@@ -74,7 +75,7 @@ public class PathFinder : MonoBehaviour {
     private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
     {
         Waypoint neighbour = grid[neighbourCoordinates];
-        if (neighbour.isExplored)
+        if (neighbour.isExplored || queue.Contains(neighbour))
         {
             //do nothing
         }
@@ -82,7 +83,8 @@ public class PathFinder : MonoBehaviour {
         {
             neighbour.SetTopColor(Color.blue);
             queue.Enqueue(neighbour);
-            print("Queueing" + neighbour.name);
+            neighbour.exploredFrom = searchCenter;
+            //print("Queueing" + neighbour.name);
         }
     }
 
@@ -111,7 +113,7 @@ public class PathFinder : MonoBehaviour {
             }
         }
 
-        print("Loaded " +grid.Count + "blocks");
+        //print("Loaded " +grid.Count + "blocks");
 
     }
 
