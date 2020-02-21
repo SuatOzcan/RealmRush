@@ -11,8 +11,7 @@ public class EnemyMovement : MonoBehaviour {
     }
     
 
-    [SerializeField] List<Waypoint> path;
-
+    //[SerializeField] List<Waypoint> path;
 
     IEnumerator FollowPath(List<Waypoint> path)
     {
@@ -31,6 +30,5 @@ public class EnemyMovement : MonoBehaviour {
     {
 
     }
-    
 }
  
