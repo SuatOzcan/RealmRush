@@ -191,12 +191,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4171626630180392, guid: eb24ede3eeadbaa4ea32028209c84593,
     type: 2}
   m_PrefabInternal: {fileID: 436198}
---- !u!114 &241060587 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114728309970101216, guid: eb24ede3eeadbaa4ea32028209c84593,
-    type: 2}
-  m_PrefabInternal: {fileID: 284473855}
-  m_Script: {fileID: 11500000, guid: 41eb91121d6f7374fbd6081f1c9ca82e, type: 3}
 --- !u!1 &262803591
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,8 +713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f520710a4cf5348ad694774e157329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: {fileID: 1868533881}
-  endWayPoint: {fileID: 241060587}
+  startWaypoint: {fileID: 656410539}
+  endWayPoint: {fileID: 1868533881}
 --- !u!1001 &1039783915
 Prefab:
   m_ObjectHideFlags: 0
@@ -800,6 +794,11 @@ Prefab:
       propertyPath: path.Array.data[6]
       value: 
       objectReference: {fileID: 656410539}
+    - target: {fileID: 114332456992457192, guid: 29556f7dd14e8a6498c162358fa5fa10,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29556f7dd14e8a6498c162358fa5fa10, type: 2}
   m_IsPrefabAsset: 0

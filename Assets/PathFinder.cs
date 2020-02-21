@@ -10,6 +10,7 @@ public class PathFinder : MonoBehaviour {
     Queue<Waypoint> queue = new Queue<Waypoint>();
     bool isRunning = true;
     Waypoint searchCenter;
+    [SerializeField] List<Waypoint> path = new List<Waypoint>();
 
     Vector2Int[] directions =
     {
@@ -18,16 +19,40 @@ public class PathFinder : MonoBehaviour {
         Vector2Int.down,
         Vector2Int.left
     };
+
+    public List<Waypoint> GetPath()
+    {
+        LoadBlocks();
+        ColorStartAndEnd();
+        BreadthFirstSearch();
+        CreatePath();
+        return path;
+
+    }
 	// Use this for initialization
 	void Start () {
 
-        LoadBlocks();
-        ColorStartAndEnd();
-        //ExploreNeighbours(startWaypoint);
-        PathFind();
+        
     }
 
-    private void PathFind()
+    private void CreatePath()
+    {
+        path.Add(endWayPoint);
+        Waypoint previous = endWayPoint.exploredFrom;
+        while (previous != startWaypoint)
+        {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(startWaypoint);
+        path.Reverse();
+       /* foreach (Waypoint block in path)
+        {
+            print(block);
+        } */
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
 
@@ -35,12 +60,11 @@ public class PathFinder : MonoBehaviour {
         {
             
             searchCenter = queue.Dequeue();
-            print(searchCenter);
+            //print(searchCenter);
             HaltIfEndFound();
             ExploreNeighbours();
             searchCenter.isExplored = true;
         }
-        print("Finish pathfinding.");
     }
 
     private void HaltIfEndFound()

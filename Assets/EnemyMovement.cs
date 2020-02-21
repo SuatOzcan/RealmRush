@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
+    void Start()
+    {
+        PathFinder pathFinder = FindObjectOfType<PathFinder>();
+        List<Waypoint> path = pathFinder.GetPath();
+        StartCoroutine(FollowPath(path));
+    }
+    
 
     [SerializeField] List<Waypoint> path;
 
-    // Use this for initialization
-    void Start()
-    {
-        print("Hey I'm back at Start");
-        StartCoroutine(FollowPath());
-    }
 
-    IEnumerator FollowPath()
+    IEnumerator FollowPath(List<Waypoint> path)
     {
         print("Starting patrol...");
         foreach (Waypoint waypoint in path)
@@ -30,4 +31,6 @@ public class EnemyMovement : MonoBehaviour {
     {
 
     }
+    
 }
+ 
